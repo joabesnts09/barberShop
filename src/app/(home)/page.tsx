@@ -1,11 +1,22 @@
-import Image from "next/image";
-import { main } from "ts-node/dist/bin";
-import Header from "../_components/header";
+import Image from 'next/image'
+import { main } from 'ts-node/dist/bin'
+import Header from '../_components/header'
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
 export default function Home() {
-  return (
-    <div>
-      <Header/>
-    </div>
-  );
+    return (
+        <div>
+            <Header />
+
+            <div className='px-5 pt-5'>
+                <h2 className="text-xl font-bold">Olá, Joabe.</h2>
+                <p className="capitalize text-sm">
+                    {format(new Date(), "EEEE',' dd ' de ' MMMM", {
+                        locale: ptBR,
+                    })}
+                </p>
+            </div>
+        </div>
+    )
 }
