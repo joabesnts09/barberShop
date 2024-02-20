@@ -1,12 +1,11 @@
-import Image from 'next/image'
-import { main } from 'ts-node/dist/bin'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import Header from '../_components/Header'
 import Search from './_components/Search'
 import BookingItem from '../_components/BookingItem'
-import { db } from '../_lib/prisma'
 import BarberShopItem from './_components/BarberShopItem'
+import { db } from '../_lib/prisma'
+
 
 
 export default async function Home() {
