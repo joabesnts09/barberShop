@@ -14,6 +14,7 @@ const Header = () => {
                         alt="FSW Baber"
                         height={22}
                         width={120}
+                        // className='w-auto h-auto'
                     />
                     <Button variant="outline" size="icon" className="h-8 w-8">
                         <MenuIcon size={18}/>

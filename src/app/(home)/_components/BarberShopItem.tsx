@@ -37,6 +37,7 @@ const BarberShopItem = ({ barbershop }: IBarberShopItemProps) => {
                             src={barbershop.imageUrl}
                             alt={barbershop.name}
                             fill
+                            sizes='profile'
                             style={{
                                 objectFit: 'cover',
                             }}
