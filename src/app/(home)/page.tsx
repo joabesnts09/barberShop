@@ -6,6 +6,12 @@ import BookingItem from '../_components/BookingItem'
 import BarberShopItem from './_components/BarberShopItem'
 import { db } from '../_lib/prisma'
 
+interface IBarbershop {
+    id: string 
+    name: string
+    address: string
+    imageUrl: string
+}
 
 
 export default async function Home() {
@@ -41,7 +47,7 @@ export default async function Home() {
 
 
                 <div className='flex px-5 gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden'>
-                    {barberShop.map((barbershop) => (
+                    {barberShop.map((barbershop: IBarbershop) => (
                        <BarberShopItem key={barbershop.id}  barbershop={barbershop}/>
                     ))}
                 </div>
@@ -53,7 +59,7 @@ export default async function Home() {
 
 
                 <div className='flex px-5 gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden'>
-                    {barberShop.map((barbershop) => (
+                    {barberShop.map((barbershop: IBarbershop) => (
                        <BarberShopItem key={barbershop.id}  barbershop={barbershop}/>
                     ))}
                 </div>
