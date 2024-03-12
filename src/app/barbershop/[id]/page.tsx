@@ -1,7 +1,7 @@
 import { db } from '@/app/_lib/prisma'
 import BarbershopInfo from './_components/barbershop-infos'
 import ServiceItem from './_components/service-item'
-import { Barbershop, Booking, Service } from '@prisma/client'
+import { Booking, Service } from '@prisma/client'
 
 interface IBarbershopDetailsPage {
     params: {
@@ -31,7 +31,7 @@ const BarbershopDetailsPage = async ({ params }: IBarbershopDetailsPage) => {
         include: {
             services: true,
         }
-    })
+    })!
 
     if (!barbershop) {
         // TODO: retornar para homePage
