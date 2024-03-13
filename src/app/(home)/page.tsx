@@ -15,6 +15,7 @@ interface IBarbershop {
 
 
 export default async function Home() {
+     
     
     const barberShop = await db.barbershop.findMany({})
 

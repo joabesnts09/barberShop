@@ -5,6 +5,8 @@ import { MenuIcon } from 'lucide-react'
 import imgLogo from "../../../public/Logo.png"
 
 const Header = () => {
+
+
     return (
         <>
             <Card>
@@ -14,11 +16,12 @@ const Header = () => {
                         alt="FSW Baber"
                         height={22}
                         width={120}
-                        // className='w-auto h-auto'
+                    // className='w-auto h-auto'
                     />
                     <Button variant="outline" size="icon" className="h-8 w-8">
                         <MenuIcon size={18}/>
                     </Button>
+
                 </CardContent>
             </Card>
         </>
