@@ -29,14 +29,14 @@ const BarbershopDetailsPage = async ({ params }: IBarbershopDetailsPage) => {
 
         return null
     }
-    const barbershop: IBarbershop = await db.barbershop.findUnique({
+    const barbershop = await db.barbershop.findUnique({
         where: {
             id: params.id,
         },
         include: {
             services: true,
         }
-    })!
+    })
 
     if (!barbershop) {
         // TODO: retornar para homePage
@@ -50,7 +50,7 @@ const BarbershopDetailsPage = async ({ params }: IBarbershopDetailsPage) => {
                 <div className='px-5 flex flex-col gap-4 py-6'>
                     {
                         barbershop.services.map((service) => (
-                            <ServiceItem key={service.id} service={service} isAuthenticate={!!session?.user} />
+                            <ServiceItem key={service.id} barbershop={barbershop} service={service} isAuthenticate={!!session?.user} />
                         ))
                     }
                 </div>
