@@ -13,6 +13,8 @@ import { generateDayTimeList } from './_helpers/hours'
 import { format, setHours, setMinutes } from 'date-fns'
 import { saveBookings } from '../_actions/save-bocking'
 import { Loader2 } from 'lucide-react'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 interface IServiceItemProps {
     barbershop: Barbershop
@@ -22,8 +24,10 @@ interface IServiceItemProps {
 
 const ServiceItem = ({ barbershop, service, isAuthenticate }: IServiceItemProps) => {
 
+    const router = useRouter()
     const { data } = useSession()
 
+    const [sheetIsOpen, setSheetIsOpen] = useState(false)
     const [submitIsLoading, setSubmitIsLoading] = useState(false)
     const [hour, setHour] = useState<string | undefined>()
     const [date, setDate] = useState<Date | undefined>(undefined)
@@ -63,6 +67,19 @@ const ServiceItem = ({ barbershop, service, isAuthenticate }: IServiceItemProps)
                 barbershopId: barbershop.id,
                 date: newDate,
                 userId: (data.user as any).id
+            })
+            setSheetIsOpen(false)
+            setHour(undefined)
+            setDate(undefined)
+
+            toast('Reservar realizada com susseco', {
+                description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+                    locale: ptBR,
+                }),
+                action: {
+                    label: "Visualizar",
+                    onClick: () => router.push('/bookings'),
+                },
             })
 
         } catch (error) {
@@ -105,7 +122,7 @@ const ServiceItem = ({ barbershop, service, isAuthenticate }: IServiceItemProps)
                                         currency: 'BRL',
                                     }).format(Number(service.price))}
                                 </p>
-                                <Sheet>
+                                <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
                                     <SheetTrigger>
                                         <Button variant='secondary' onClick={handleBookingClick}>
                                             Reservar
