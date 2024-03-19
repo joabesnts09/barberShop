@@ -41,13 +41,13 @@ const ServiceItem = ({ barbershop, service, isAuthenticate }: IServiceItemProps)
         }
 
         const refreshAvailableHours = async () => {
-            const getBookings = await getDayBookings(date)
+            const getBookings = await getDayBookings(barbershop.id, date)
 
             setDayBookings(getBookings)
         }
 
         refreshAvailableHours()
-    }, [date])
+    }, [date, barbershop.id])
 
 
     const handleDateClick = (date: Date | undefined) => {
